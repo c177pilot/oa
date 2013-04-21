@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<block>
+  <name>gns430_to_fg</name>
+  <key>openavionics_gns430_to_fg</key>
+  <category>openavionics</category>
+  <import>import openavionics</import>
+  <make>openavionics.gns430_to_fg($ip_addr,$port)</make>
+
+  <param>
+    <name>IP Address</name>
+    <key>ip_addr</key>
+    <type>string</type>
+  </param>
+  
+<param>
+    <name>Port</name>
+    <key>port</key>
+    <type>int</type>
+  </param>
+
+   <sink>
+    <name>in</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+</block>

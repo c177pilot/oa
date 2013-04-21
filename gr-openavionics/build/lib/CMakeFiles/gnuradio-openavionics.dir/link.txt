@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -O3 -DNDEBUG   -shared -Wl,-soname,libgnuradio-openavionics.so -o libgnuradio-openavionics.so CMakeFiles/gnuradio-openavionics.dir/square_ff_impl.cc.o -lboost_filesystem-mt -lboost_system-mt /usr/local/lib/libgruel.so /usr/local/lib/libgnuradio-core.so -Wl,-rpath,/usr/local/lib: 

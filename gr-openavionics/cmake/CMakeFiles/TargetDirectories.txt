@@ -1,0 +1,9 @@
+/home/john/src/openavionics/gr-openavionics/cmake/swig/CMakeFiles/_openavionics_swig.dir
+/home/john/src/openavionics/gr-openavionics/cmake/swig/CMakeFiles/_openavionics_swig_doc_tag.dir
+/home/john/src/openavionics/gr-openavionics/cmake/swig/CMakeFiles/_openavionics_swig_swig_tag.dir
+/home/john/src/openavionics/gr-openavionics/cmake/lib/CMakeFiles/gnuradio-openavionics.dir
+/home/john/src/openavionics/gr-openavionics/cmake/apps/CMakeFiles/pygen_apps_9a6dd.dir
+/home/john/src/openavionics/gr-openavionics/cmake/python/CMakeFiles/pygen_python_7840d.dir
+/home/john/src/openavionics/gr-openavionics/cmake/swig/CMakeFiles/pygen_swig_02027.dir
+/home/john/src/openavionics/gr-openavionics/cmake/lib/CMakeFiles/test-openavionics.dir
+/home/john/src/openavionics/gr-openavionics/cmake/CMakeFiles/uninstall.dir

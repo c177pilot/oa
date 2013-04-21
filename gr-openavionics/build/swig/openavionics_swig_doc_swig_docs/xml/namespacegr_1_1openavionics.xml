@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.6.1">
+  <compounddef id="namespacegr_1_1openavionics" kind="namespace">
+    <compoundname>gr::openavionics</compoundname>
+    <innerclass refid="classgr_1_1openavionics_1_1square__ff" prot="public">gr::openavionics::square_ff</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/john/src/openavionics/gr-openavionics.backup/include/openavionics/square_ff.h" line="29"/>
+  </compounddef>
+</doxygen>

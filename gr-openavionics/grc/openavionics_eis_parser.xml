@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<block>
+  <name>eis_parser</name>
+  <key>openavionics_eis_parser</key>
+  <category>openavionics</category>
+  <import>import openavionics</import>
+  <make>openavionics.eis_parser()</make>
+
+  <sink>
+    <name>in</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+</block>

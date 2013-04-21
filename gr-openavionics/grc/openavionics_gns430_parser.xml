@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<block>
+  <name>gns430_parser</name>
+  <key>openavionics_gns430_parser</key>
+  <category>openavionics</category>
+  <import>import openavionics</import>
+  <make>openavionics.gns430_parser()</make>
+   <sink>
+    <name>in</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+</block>
