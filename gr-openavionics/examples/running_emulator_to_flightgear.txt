@@ -44,7 +44,7 @@ Step 4 - Start Flightgear for Display
 --------------------------------------
 Run this command. If you are running FlightgearMap on a tablet, replace "192.168.69.104" with the ip address of your tablet - must be on the same wireless router.
 
-fgfs --generic=socket,in,10,,5502,udp,geo --generic=socket,in,10,,5501,udp,attitude --telnet=9000 --fdm=null --airport=KFDR --timeofday=noon --httpd=9001 --disable-clouds --visibility=40000 --disable-real-weather-fetch --\generic=socket,out,10,192.168.69.104,5503,udp,andatlas 
+fgfs --generic=socket,in,10,,5502,udp,geo --generic=socket,in,10,,5501,udp,attitude --telnet=9000 --fdm=null --airport=KFDR --timeofday=noon --httpd=9001 --disable-clouds --visibility=40000 --disable-real-weather-fetch --generic=socket,out,10,192.168.69.104,5503,udp,andatlas 
 
 
 
