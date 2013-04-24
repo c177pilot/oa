@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <generic>
+
+  <input>
+   <line_separator>newline</line_separator>
+   <var_separator>:</var_separator>
+  
+   <chunk>
+    <name>latitude</name>
+    <type>float</type>
+    <format>%.10f</format>
+    <node>/position/latitude-deg</node>
+   </chunk>
+
+   <chunk>
+    <name>longitude</name>
+    <type>float</type>
+    <format>%.10f</format>
+    <node>/position/longitude-deg</node>
+   </chunk>
+   
+      <chunk>
+    <name>ground_speed</name>
+    <format>%f</format>
+    <node>/velocities/groundspeed-kt</node>
+   </chunk>
+ 
+ </input>
+
+ </generic>
+
+</PropertyList>

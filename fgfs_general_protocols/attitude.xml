@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <generic>
+
+  <input>
+   <line_separator>newline</line_separator>
+   <var_separator>:</var_separator>
+  
+   <chunk>
+    <name>pitch angle</name>
+    <type>float</type>
+    <format>%f</format>
+    <node>/orientation/pitch-deg</node>
+   </chunk>
+
+   <chunk>
+    <name>Roll angle</name>
+    <type>float</type>
+    <format>%f</format>
+    <node>/orientation/roll-deg</node>
+   </chunk>
+   
+   <chunk>
+    <name>heading</name>
+    <format>%f</format>
+    <node>/orientation/heading-deg</node>
+   </chunk>
+   
+<chunk>
+    <name>altitude</name>
+    <format>%03d</format>
+    <node>/position/altitude-ft</node>
+   </chunk>
+   
+
+   
+ </input>
+
+ </generic>
+
+</PropertyList>
