@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Apr 17 19:28:14 2013
+# Generated: Tue Apr 23 21:32:01 2013
 ##################################################
 
 from gnuradio import blocks
@@ -28,8 +28,8 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Blocks
 		##################################################
-		self.openavionics_serial_io_0_0_0 = openavionics.serial_io("/dev/pts/10",0,19200,0,1,False)
-		self.openavionics_serial_io_0_0 = openavionics.serial_io("/dev/pts/7",0,19200,0,1,False)
+		self.openavionics_serial_io_0_0_0 = openavionics.serial_io("/dev/pts/11",0,19200,0,1,False)
+		self.openavionics_serial_io_0_0 = openavionics.serial_io("/dev/pts/8",0,19200,0,1,False)
 		self.openavionics_serial_io_0 = openavionics.serial_io("/dev/pts/3",0,19200,0,1,False)
 		self.openavionics_gns430_to_fg_0 = openavionics.gns430_to_fg("127.0.0.1",5502)
 		self.openavionics_gns430_parser_0 = openavionics.gns430_parser()
@@ -41,12 +41,12 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Asynch Message Connections
 		##################################################
-		self.msg_connect(self.openavionics_eis_parser_0, "out", self.blocks_message_debug_0_0, "print")
-		self.msg_connect(self.openavionics_serial_io_0_0, "out", self.openavionics_eis_parser_0, "in")
-		self.msg_connect(self.openavionics_serial_io_0, "out", self.openavionics_ahrs_parser_0, "in")
 		self.msg_connect(self.openavionics_serial_io_0_0_0, "out", self.openavionics_gns430_parser_0, "in")
 		self.msg_connect(self.openavionics_gns430_parser_0, "out", self.openavionics_gns430_to_fg_0, "in")
 		self.msg_connect(self.openavionics_ahrs_parser_0, "out", self.openavionics_ahrs_to_fg_0, "in")
+		self.msg_connect(self.openavionics_serial_io_0, "out", self.openavionics_ahrs_parser_0, "in")
+		self.msg_connect(self.openavionics_serial_io_0_0, "out", self.openavionics_eis_parser_0, "in")
+		self.msg_connect(self.openavionics_eis_parser_0, "out", self.blocks_message_debug_0_0, "store")
 
 	def get_samp_rate(self):
 		return self.samp_rate

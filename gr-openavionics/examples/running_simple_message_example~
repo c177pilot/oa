@@ -1,0 +1,52 @@
+Getting the Demo to Run
+===========================
+
+Step 1 - Create Virtual serial ports
+---------------------------
+If you are not working with real hardware, you need to start three virtual serial ports.  Socat is a good option for this.  If you don't have socat, you can install with:
+
+sudo apt-get install socat
+
+After you have this installed, you need to start three separate instances.  Open three separate terminal tabs, and run threee instances of this command:
+
+socat -d -d pty,raw,echo=0 pty,raw,echo=0
+
+Note the paths of each of the pairs created.  Here's an example:
+
+john@hoover:~/src/openavionics/gr-openavionics/examples$ socat -d -d pty,raw,echo=0 pty,raw,echo=0
+2013/04/23 21:00:42 socat[10899] N PTY is /dev/pts/10
+2013/04/23 21:00:42 socat[10899] N PTY is /dev/pts/11
+
+So, in this case, our ports are /dev/pts/10 and /dev/pts/11.
+
+
+
+Step 2 - Start the gnuradio flowgraph
+-----------------------------
+This is a simple one:
+
+python [openavionics_folder]/gr-openavionics/examples/ahrs_gps_eis_to_fg.py
+
+You may need to open the GRC file and change the serial devices listed to match the pairs of virtual serial ports you get from Step 1.
+
+
+Step 3 - Start the emulator
+-----------------------------
+Before starting the emulator, look at the ports.conf file in [openavionics_folder]/ahrs_emul/python.  Change the port names to match the ports from step 1, but opposite of step 2.  For example, you would have assigned /dev/pts/10 in the gnuradio flowgraph, and then /dev/pts/11 in the ports.conf file.  This connects the two applications through the virtual serial connection.
+
+Anyway, replace the serial ports of the first three lines with the serial connections from Step 1.
+
+Then run the emulator:
+
+python [openavionics_folder]/ahrs_emul/python/ahrs_emul_2.py -c [openavionics_folder]/ahrs_emul/python/ports.conf -f [openavionics_folder]/ahrs_emul/python/DEMO-20130227-094408+30.LOG --speedup 3.5
+
+Step 4 - Start Flightgear for Display
+--------------------------------------
+Run this command. If you are running FlightgearMap on a tablet, 
+
+fgfs --generic=socket,in,10,,5502,udp,geo --generic=socket,in,10,,5501,udp,attitude --telnet=9000 --fdm=null --airport=KFDR --timeofday=noon --httpd=9001 --disable-clouds --visibility=40000 --disable-real-weather-fetch --\generic=socket,out,10,192.168.69.104,5503,udp,andatlas 
+
+
+
+
+
