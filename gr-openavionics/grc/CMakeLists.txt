@@ -25,5 +25,8 @@ install(FILES
     openavionics_eis_parser.xml
     openavionics_gns430_parser.xml
     openavionics_ahrs_to_fg.xml
-    openavionics_gns430_to_fg.xml DESTINATION share/gnuradio/grc/blocks
+    openavionics_gns430_to_fg.xml
+    openavionics_joystick_interface.xml
+    openavionics_audio_ptt_gate.xml
+    openavionics_audio_ptt.xml DESTINATION share/gnuradio/grc/blocks
 )

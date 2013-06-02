@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<block>
+  <name>joystick_interface</name>
+  <key>openavionics_joystick_interface</key>
+  <category>openavionics</category>
+  <import>import openavionics</import>
+  <make>openavionics.joystick_interface()</make>
+
+  <source>
+    <name>out</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+</block>

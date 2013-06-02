@@ -37,7 +37,10 @@ GR_PYTHON_INSTALL(
     eis_parser.py
     gns430_parser.py
     ahrs_to_fg.py
-    gns430_to_fg.py DESTINATION ${GR_PYTHON_DIR}/openavionics
+    gns430_to_fg.py
+    joystick_interface.py
+    audio_ptt_gate.py
+    audio_ptt.py DESTINATION ${GR_PYTHON_DIR}/openavionics
 )
 
 ########################################################################
