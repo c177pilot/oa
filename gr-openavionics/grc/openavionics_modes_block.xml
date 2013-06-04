@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<block>
+  <name>modes_block</name>
+  <key>openavionics_modes_block</key>
+  <category>openavionics</category>
+  <import>import openavionics</import>
+  <make>openavionics.modes_block($rate,$threshold)</make>
+
+  <param>
+    <name>Sample Rate(sps)</name>
+    <key>rate</key>
+    <value>4000000.0</value>
+    <type>real</type>
+  </param>
+  
+<param>
+    <name>Threshold(dB)</name>
+    <key>threshold</key>
+    <value>5.0</value>
+    <type>real</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+</block>

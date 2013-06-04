@@ -16,7 +16,6 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-
 install(FILES
     openavionics_square3_ff.xml
     openavionics_square_ff.xml
@@ -28,5 +27,6 @@ install(FILES
     openavionics_gns430_to_fg.xml
     openavionics_joystick_interface.xml
     openavionics_audio_ptt_gate.xml
-    openavionics_audio_ptt.xml DESTINATION share/gnuradio/grc/blocks
+    openavionics_audio_ptt.xml
+    openavionics_modes_block.xml DESTINATION share/gnuradio/grc/blocks
 )
