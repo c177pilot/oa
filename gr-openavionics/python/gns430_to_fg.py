@@ -39,8 +39,8 @@ class gns430_to_fg(gr.sync_block):
             in_sig=None,
             out_sig=None)
             
-        self.message_port_register_in(pmt.pmt_intern('in'))
-        self.set_msg_handler(pmt.pmt_intern('in'),self.handle_msg)
+        self.message_port_register_in(pmt.intern('in'))
+        self.set_msg_handler(pmt.intern('in'),self.handle_msg)
         
         #open udp port
         try:            

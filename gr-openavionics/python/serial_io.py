@@ -23,7 +23,6 @@ from gnuradio import gr
 try: import pmt
 except: from gruel import pmt
 from math import pi
-from gruel import pmt
 import serial
 import thread
 
@@ -99,17 +98,17 @@ class serial_io(gr.sync_block):
         self.ser.write("hel;lkfsdsa;lkfjdsaflo\n\r")      # write a string
         #ser.close()             # close port
 
-        self.message_port_register_out(pmt.pmt_intern('out'))
+        self.message_port_register_out(pmt.intern('out'))
         
         self.msg_list = []
-        self.message_port_register_in(pmt.pmt_intern('in'))
-        self.set_msg_handler(pmt.pmt_intern('in'),
+        self.message_port_register_in(pmt.intern('in'))
+        self.set_msg_handler(pmt.intern('in'),
                              self.handle_msg)
         thread.start_new_thread( self.tx_work, (self.ser , ))
 
     def handle_msg(self, msg):
         # Create a new PMT from long value and put in list
-        tx_string = pmt.pmt_symbol_to_string(msg)
+        tx_string = pmt.symbol_to_string(msg)
         self.ser.write(tx_string)
 
     def tx_work(self,ser):
@@ -120,8 +119,8 @@ class serial_io(gr.sync_block):
             else:
                 rx_buf = ser.read()
             #write string rx_buf to pmt
-            msg = pmt.pmt_string_to_symbol(rx_buf)
-            self.message_port_pub(pmt.pmt_intern('out'),
+            msg = pmt.string_to_symbol(rx_buf)
+            self.message_port_pub(pmt.intern('out'),
                                   msg)
     
 

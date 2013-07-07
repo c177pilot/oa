@@ -20,7 +20,8 @@
 
 import numpy
 from gnuradio import gr
-from gruel import pmt
+try: import pmt
+except: from gruel import pmt
 from math import pi
 import serial
 import thread
@@ -64,11 +65,11 @@ class ahrs_parser(gr.basic_block):
         self.bytes_got = 0
         self.running_checksum = 0
 
-        self.message_port_register_out(pmt.pmt_intern('out'))
+        self.message_port_register_out(pmt.intern('out'))
         
         self.msg_list = []
-        self.message_port_register_in(pmt.pmt_intern('in'))
-        self.set_msg_handler(pmt.pmt_intern('in'),
+        self.message_port_register_in(pmt.intern('in'))
+        self.set_msg_handler(pmt.intern('in'),
                              self.handle_msg)
         
     def if_negative(self,char):
@@ -216,7 +217,7 @@ class ahrs_parser(gr.basic_block):
         #print msb,lsb,value 
         #print value    
 
-        dict1 = pmt.pmt_make_dict()
+        #dict1 = pmt.pmt_make_dict()
 
         dict2 = { "align_mode_in_progress" : align_mode_in_progress,
         "air_align" : air_align,
@@ -238,7 +239,7 @@ class ahrs_parser(gr.basic_block):
         
         
         pmt_dict = pmt.to_pmt(dict2)
-        self.message_port_pub(pmt.pmt_intern('out'),pmt.to_pmt(pmt_dict))
+        self.message_port_pub(pmt.intern('out'),pmt.to_pmt(pmt_dict))
         #dict_out = pmt.to_python(pmt_dict)
         #print dict_out
 
@@ -353,7 +354,7 @@ class ahrs_parser(gr.basic_block):
             
         
     def handle_msg(self, msg):
-        tx_string = pmt.pmt_symbol_to_string(msg)
+        tx_string = pmt.symbol_to_string(msg)
         a =  map(ord,tx_string)
         iterations = len(a)           
         i = 0

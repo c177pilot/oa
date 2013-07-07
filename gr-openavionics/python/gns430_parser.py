@@ -38,10 +38,10 @@ class gns430_parser(gr.sync_block):
             out_sig=None)
             
         self.count = 0
-        self.message_port_register_out(pmt.pmt_intern('out'))
+        self.message_port_register_out(pmt.intern('out'))
         self.buf = ''
-        self.message_port_register_in(pmt.pmt_intern('in'))
-        self.set_msg_handler(pmt.pmt_intern('in'),self.handle_msg)
+        self.message_port_register_in(pmt.intern('in'))
+        self.set_msg_handler(pmt.intern('in'),self.handle_msg)
         
         self.dict2 = {}
         
@@ -126,11 +126,11 @@ class gns430_parser(gr.sync_block):
             }
             #print self.dict2
             pmt_dict = pmt.to_pmt(self.dict2)
-            self.message_port_pub(pmt.pmt_intern('out'),pmt.to_pmt(pmt_dict))
+            self.message_port_pub(pmt.intern('out'),pmt.to_pmt(pmt_dict))
         
  
     def handle_msg(self, msg):
-        tx_string = pmt.pmt_symbol_to_string(msg)
+        tx_string = pmt.symbol_to_string(msg)
         
         for i in range(len(tx_string)):
             if tx_string[i] == '\n':

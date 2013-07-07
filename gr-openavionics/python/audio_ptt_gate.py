@@ -20,7 +20,8 @@
 
 import numpy
 from gnuradio import gr
-from gruel import pmt
+try: import pmt
+except: from gruel import pmt
 
 class audio_ptt_gate(gr.basic_block):
     """

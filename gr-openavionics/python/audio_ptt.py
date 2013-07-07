@@ -20,7 +20,8 @@
 
 import numpy
 from gnuradio import gr
-from gruel import pmt
+try: import pmt
+except: from gruel import pmt
 
 class audio_ptt(gr.basic_block):
     """
@@ -32,8 +33,8 @@ class audio_ptt(gr.basic_block):
             in_sig=[numpy.float32],
             out_sig=[numpy.float32])
             
-        self.message_port_register_in(pmt.pmt_intern('in2'))
-        self.set_msg_handler(pmt.pmt_intern('in2'),self.handle_msg)
+        self.message_port_register_in(pmt.intern('in2'))
+        self.set_msg_handler(pmt.intern('in2'),self.handle_msg)
         
         self.ptt  = False
 
@@ -57,13 +58,13 @@ class audio_ptt(gr.basic_block):
         a = len(output_items[0])
         if self.ptt:
             output_items[0][:] = input_items[0][0:a]
-            source = pmt.pmt_string_to_symbol("ptt_gate")
-            key = pmt.pmt_string_to_symbol("tx_sob")
-            self.add_item_tag(0, self.nitems_written(0), key, pmt.PMT_T, source)
-            key = pmt.pmt_string_to_symbol("tx_eob")
-            self.add_item_tag(0, self.nitems_written(0) + a - 1, key, pmt.PMT_T, source)
-            return len(output_items[0])
+            #source = pmt.string_to_symbol("ptt_gate")
+            #key = pmt.string_to_symbol("tx_sob")
+            #self.add_item_tag(0, self.nitems_written(0), key, pmt.PMT_T, source)
+            #key = pmt.string_to_symbol("tx_eob")
+            #self.add_item_tag(0, self.nitems_written(0) + a - 1, key, pmt.PMT_T, source)
             self.consume_each(len(output_items[0]))
+            return len(output_items[0])
         else:
             self.consume_each(len(input_items[0]))
             return 0 

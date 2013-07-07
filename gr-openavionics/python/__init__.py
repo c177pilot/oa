@@ -52,9 +52,11 @@ from eis_parser import eis_parser
 from gns430_parser import gns430_parser
 from ahrs_to_fg import ahrs_to_fg
 from gns430_to_fg import gns430_to_fg
-from joystick_interface import joystick_interface
+#from joystick_interface import joystick_interface
 from audio_ptt_gate import audio_ptt_gate
 from audio_ptt import audio_ptt
+#from modes_block import modes_block
+
 #
 
 # ----------------------------------------------------------------

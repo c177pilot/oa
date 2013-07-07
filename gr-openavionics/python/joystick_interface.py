@@ -23,7 +23,6 @@ from gnuradio import gr
 try: import pmt
 except: from gruel import pmt
 from math import pi
-from gruel import pmt
 import serial
 import thread
 import pygame
@@ -69,7 +68,7 @@ class joystick_interface(gr.sync_block):
             in_sig=None,
             out_sig=None)
 
-        self.message_port_register_out(pmt.pmt_intern('out'))
+        self.message_port_register_out(pmt.intern('out'))
         thread.start_new_thread( self.tx_work, (1, ))
         
     def tx_work(self,x):
@@ -103,7 +102,7 @@ class joystick_interface(gr.sync_block):
                         dict2 = { "id" : "joystick",
                         "buttons" : button}
                 
-                        pmt_dict = pmt.to_pmt(dict2)
-                        self.message_port_pub(pmt.pmt_intern('out'),pmt.to_pmt(pmt_dict))
+                        #pmt_dict = pmt.to_pmt(dict2)
+                        self.message_port_pub(pmt.intern('out'),pmt.to_pmt(dict2))
                     
                     action = []

@@ -18,14 +18,14 @@
 # Boston, MA 02110-1301, USA.
 # 
 
-from gnuradio import gr
-from gnuradio import gru, optfir, eng_notation, blks2
+from gnuradio import gr,gru,eng_notation
 import gnuradio.gr.gr_threading as _threading
 import csv
 from string import split, join
 import air_modes
-import csv
 from air_modes.exceptions import *
+try: import pmt
+except: from gruel import pmt
 #import zmq
 
 class modes_block(gr.hier_block2):
@@ -37,6 +37,9 @@ class modes_block(gr.hier_block2):
             "modes_block",
             gr.io_signature(1,1, gr.sizeof_gr_complex),  # Input signature
             gr.io_signature(0,0,0)) # Output signature
+        
+        self.message_port_register_hier_out("out")
+        #self.message_port_register_hier_out('out')
 
         self._queue = gr.msg_queue()
 
@@ -45,10 +48,41 @@ class modes_block(gr.hier_block2):
         self.connect(self, self.rx_path)
 
         #self._sender = air_modes.zmq_pubsub_iface(context, subaddr=None, pubaddr="inproc://modes-radio-pub")
-        self._async_sender = gru.msgq_runner(self._queue, self.send)
+        self._queue_to_blob = _queue_to_blob(self._queue)
+        #self._async_sender = gru.msgq_runner(self._queue, self.send)
+                
+
+        #self.msg_connect(self._queue_to_blob,"out",self,"out")
+
 
     def send(self, msg):
         #self._sender["dl_data"] = msg.to_string()
-        print msg.to_string()
-            
+        raw_string = msg.to_string()
+        dict2 = { "id" : "raw_mode_s",
+                "raw_data" : raw_string}
+        #pmt_dict = pmt.to_pmt(dict2)
+        #self.message_port_pub(pmt.pmt_intern('out'),pmt.to_pmt(pmt_dict))
+
+class _queue_to_blob(gr.basic_block):
+    """
+    Helper for the deframer, reads queue, unpacks packets, posts.
+    It would be nicer if the framer_sink output'd messages.
+    """
+    def __init__(self, msgq):
+        gr.basic_block.__init__(self,
+            name="_queue_to_blob",
+            in_sig=None,
+            out_sig=None
+        )
+        self._msgq = msgq
+        self.message_port_register_out(pmt.intern('out'))
+
         
+    def work(self, input_items, output_items):
+        while True:
+            try: msg = self._msgq.delete_head()
+            except: return -1
+            print "msg_rx"
+
+            msg = pmt.pmt_string_to_symbol(msg.to_string())
+            self.message_port_pub(pmt.intern('out'),msg)
