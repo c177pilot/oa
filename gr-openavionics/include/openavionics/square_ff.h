@@ -23,7 +23,7 @@
 #define INCLUDED_OPENAVIONICS_SQUARE_FF_H
 
 #include <openavionics/api.h>
-#include <gr_block.h>
+#include <gnuradio/block.h>
 
 namespace gr {
   namespace openavionics {
@@ -33,7 +33,7 @@ namespace gr {
      * \ingroup openavionics
      *
      */
-    class OPENAVIONICS_API square_ff : virtual public gr_block
+    class OPENAVIONICS_API square_ff : virtual public gr::block
     {
      public:
       typedef boost::shared_ptr<square_ff> sptr;

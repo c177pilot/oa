@@ -19,10 +19,14 @@
     <value>5.0</value>
     <type>real</type>
   </param>
-
+  
   <sink>
     <name>in</name>
     <type>complex</type>
   </sink>
-
+  
+  <source>
+    <name>out</name>
+    <type>message</type>
+  </source>
 </block>

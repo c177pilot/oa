@@ -24,13 +24,11 @@ include(GrPlatform) #define LIB_SUFFIX
 
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
-
 list(APPEND openavionics_sources
-    square_ff_impl.cc
-)
+    square_ff_impl.cc )
 
 add_library(gnuradio-openavionics SHARED ${openavionics_sources})
-target_link_libraries(gnuradio-openavionics ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES})
+target_link_libraries(gnuradio-openavionics ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
 set_target_properties(gnuradio-openavionics PROPERTIES DEFINE_SYMBOL "gnuradio_openavionics_EXPORTS")
 
 ########################################################################
@@ -58,7 +56,7 @@ add_executable(test-openavionics ${test_openavionics_sources})
 
 target_link_libraries(
   test-openavionics
-  ${GNURADIO_CORE_LIBRARIES}
+  ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
   gnuradio-openavionics

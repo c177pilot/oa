@@ -358,7 +358,7 @@ class ahrs_parser(gr.basic_block):
         a =  map(ord,tx_string)
         iterations = len(a)           
         i = 0
-             
+        
         while i < iterations:  
             char = a[i]
             if self.state == SEARCHING_HEADER:
@@ -396,5 +396,3 @@ class ahrs_parser(gr.basic_block):
                 self.state = SEARCHING_HEADER
                 
             i += 1
-            
-

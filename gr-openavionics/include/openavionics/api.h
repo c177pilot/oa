@@ -22,7 +22,7 @@
 #ifndef INCLUDED_OPENAVIONICS_API_H
 #define INCLUDED_OPENAVIONICS_API_H
 
-#include <gruel/attributes.h>
+#include <gnuradio/attributes.h>
 
 #ifdef gnuradio_openavionics_EXPORTS
 #  define OPENAVIONICS_API __GR_ATTR_EXPORT

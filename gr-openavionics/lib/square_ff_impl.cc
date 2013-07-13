@@ -22,7 +22,7 @@
 #include "config.h"
 #endif
 
-#include <gr_io_signature.h>
+#include <gnuradio/io_signature.h>
 #include "square_ff_impl.h"
 
 namespace gr {
@@ -31,17 +31,18 @@ namespace gr {
     square_ff::sptr
     square_ff::make()
     {
-      return gnuradio::get_initial_sptr (new square_ff_impl());
+      return gnuradio::get_initial_sptr
+        (new square_ff_impl());
     }
 
     /*
      * The private constructor
      */
     square_ff_impl::square_ff_impl()
-      : gr_block("square_ff",
-		      gr_make_io_signature(1, 1, sizeof (float)),
-		      gr_make_io_signature(1, 1, sizeof (float)))
-    {}
+      : gr::block("square_ff",
+              gr::io_signature::make(1, 1, sizeof (float)),
+              gr::io_signature::make(1, 1, sizeof (float)))
+   {}
 
     /*
      * Our virtual destructor.
@@ -80,4 +81,6 @@ namespace gr {
 
   } /* namespace openavionics */
 } /* namespace gr */
+
+
 
