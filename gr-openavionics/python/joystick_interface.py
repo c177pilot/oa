@@ -26,8 +26,12 @@ from math import pi
 import serial
 import thread
 import pygame
+from pygame.locals import *
 import sys
+import time
 
+import pygame
+ 
 
 
 # Define some colors
@@ -72,7 +76,33 @@ class joystick_interface(gr.sync_block):
         thread.start_new_thread( self.tx_work, (1, ))
         
     def tx_work(self,x):
+		
+		pygame.init()
+		screen = pygame.display.set_mode((640, 480))
+		pygame.display.set_caption('Pygame Caption')
+		pygame.mouse.set_visible(0)
+		 
+		done = False
+		while not done:
+		   time.sleep(0.1)
+		   for event in pygame.event.get():
+			  if (event.type == KEYUP) or (event.type == KEYDOWN):
+				 print event
+				 if (event.key == K_ESCAPE and event.type == KEYDOWN):
+					dict2 = { "id" : "joystick",
+					"buttons" : [1,0,0]}
+					#pmt_dict = pmt.to_pmt(dict2)
+					self.message_port_pub(pmt.intern('out'),pmt.to_pmt(dict2))
+				 if (event.key == K_ESCAPE and event.type == KEYUP):
+					dict2 = { "id" : "joystick",
+					"buttons" : [0,0,0]}
+					#pmt_dict = pmt.to_pmt(dict2)
+					self.message_port_pub(pmt.intern('out'),pmt.to_pmt(dict2))
+					print 'here'
 
+					 
+				
+		'''
         pipe = open('/dev/input/js0','r')
         action = []
         spacing = 0
@@ -106,3 +136,4 @@ class joystick_interface(gr.sync_block):
                         self.message_port_pub(pmt.intern('out'),pmt.to_pmt(dict2))
                     
                     action = []
+			'''

@@ -26,7 +26,7 @@ install(FILES
     openavionics_ahrs_to_fg.xml
     openavionics_gns430_to_fg.xml
     openavionics_joystick_interface.xml
-    openavionics_audio_ptt_gate.xml
     openavionics_audio_ptt.xml
+    openavionics_audio_mute.xml
     openavionics_modes_block.xml DESTINATION share/gnuradio/grc/blocks
 )

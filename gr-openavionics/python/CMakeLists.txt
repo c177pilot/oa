@@ -39,8 +39,8 @@ GR_PYTHON_INSTALL(
     ahrs_to_fg.py
     gns430_to_fg.py
     joystick_interface.py
-    audio_ptt_gate.py
     audio_ptt.py
+    audio_mute.py
     modes_block.py DESTINATION ${GR_PYTHON_DIR}/openavionics
 )
 
